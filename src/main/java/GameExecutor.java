@@ -31,7 +31,7 @@ public class GameExecutor {
 
     static Point getResult(Color[][] map) {
         GomokuPlayer gomokuPlayer = new GomokuPlayer(map, Level.HIGH);
-        Result result = gomokuPlayer.play(QQPlay.selfColor);
+        Result result = gomokuPlayer.randomBegin(QQPlay.selfColor);
         if (result == null) {
             return null;
         }
