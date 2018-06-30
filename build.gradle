@@ -1,0 +1,25 @@
+group 'tangyancode.cn'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+sourceCompatibility = 1.8
+
+jar {
+    manifest {
+        attributes "Main-Class" : "QQPlay"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile files('src/main/resources/libs/gomoku-4.6.0-SNAPSHOT.jar')
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
