@@ -20,6 +20,6 @@ repositories {
 }
 
 dependencies {
-    compile files('src/main/resources/libs/gomoku-4.6.0-SNAPSHOT.jar')
+    compile files('src/main/resources/libs/gomoku-4.7.0-SNAPSHOT.jar')
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
