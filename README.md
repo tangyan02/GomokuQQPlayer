@@ -1,4 +1,4 @@
-# GomokuQQPlayer
+# 简要
 QQ对战平台全自动下棋工具，内置AI引擎EGO 4.6.0
 
 # 版本要求
