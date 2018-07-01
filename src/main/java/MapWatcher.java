@@ -18,15 +18,13 @@ class MapWatcher {
         ego.gomoku.enumeration.Color[][] result = new Color[15][15];
         List<MapPoint> points = getPointList();
         BufferedImage bufferedImage = ScreenUtil.getScreenImage();
-        int delta = 8;
         for (MapPoint point : points) {
-            int x = point.screenX + delta;
-            int y = point.screenY + delta;
-            java.awt.Color color = ScreenUtil.getScreenPixel(x, y, bufferedImage);
-            int colorValue = (color.getRed() + color.getBlue() + color.getGreen()) / 3;
+            int delta = 8;
+            ScreenColor screenColor = ScreenUtil.getScreenColor(
+                    new Point(point.screenX + delta, point.screenY + delta), bufferedImage);
             result[point.x][point.y] = Color.NULL;
-            if (colorValue > 200) result[point.x][point.y] = Color.WHITE;
-            if (colorValue < 50) result[point.x][point.y] = Color.BLACK;
+            if (screenColor == ScreenColor.WHITE) result[point.x][point.y] = Color.WHITE;
+            if (screenColor == ScreenColor.BLACK) result[point.x][point.y] = Color.BLACK;
         }
         printMap(result);
         return result;

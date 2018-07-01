@@ -1,4 +1,7 @@
+import ego.gomoku.enumeration.*;
+
 import java.awt.*;
+import java.awt.Color;
 import java.awt.event.InputEvent;
 import java.awt.image.BufferedImage;
 
@@ -25,6 +28,7 @@ class ScreenUtil {
 
     static void Click(Point point) {
         try {
+            Thread.sleep(500);
             Robot robot = new Robot();
             //很奇怪，要执行很多次才能准确移动到那个坐标
             robot.mouseMove(point.x, point.y);
@@ -35,7 +39,7 @@ class ScreenUtil {
             robot.mousePress(InputEvent.BUTTON1_MASK);
             robot.delay(100);
             robot.mouseRelease(InputEvent.BUTTON1_MASK);
-        } catch (AWTException e) {
+        } catch (AWTException | InterruptedException e) {
             e.printStackTrace();
         }
 
@@ -45,4 +49,13 @@ class ScreenUtil {
         return java.awt.MouseInfo.getPointerInfo().getLocation();
     }
 
+    static ScreenColor getScreenColor(Point point, BufferedImage bufferedImage) {
+        int x = point.x;
+        int y = point.y;
+        java.awt.Color color = ScreenUtil.getScreenPixel(x, y, bufferedImage);
+        int colorValue = (color.getRed() + color.getBlue() + color.getGreen()) / 3;
+        if (colorValue > 200) return ScreenColor.WHITE;
+        if (colorValue < 50) return ScreenColor.BLACK;
+        return ScreenColor.OTHER;
+    }
 }

@@ -15,7 +15,6 @@ class ImgPanel extends Panel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 QQPlay.centerPoint = ScreenUtil.getMousePoint();
-                QQPlay.centerPointLabel.setText(ScreenUtil.getMousePoint().x + " " + ScreenUtil.getMousePoint().y);
                 drawPreviewPoints(self.getGraphics());
                 try {
                     Thread.sleep(1000);
